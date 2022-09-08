@@ -285,16 +285,11 @@ def verify_2fa():
 
 
 
-class Disable2faForm(FlaskForm):
-    submit = SubmitField('Disable 2FA')
-
-
 @views.route('/disable_2fa', methods=['GET', 'POST'])
 @login_required
 def disable_2fa():
-    form = Disable2faForm()
-    if form.validate_on_submit():
-        current_user.verification_phone = None
+    if request.method == "POST":
+        current_user.phone_no = None
         db.session.commit()
         flash("Two-factor authentication is now disabled.",category='success')
         return redirect(url_for('views.home'))

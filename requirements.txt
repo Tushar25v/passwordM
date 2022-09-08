@@ -1,0 +1,9 @@
+flask
+flask-login
+flask-sqlalchemy
+twilio
+requests
+wtforms
+phonenumbers
+flask-wtf
+
